@@ -60,3 +60,19 @@ FLASK_ENV=development
 INDEX_NAME=medical-chatbot
 ```
 Note: If you use OpenAI directly, you can omit ```OPENAI_API_BASE``` or set it to the OpenAI default. For OpenRouter/DeepSeek, set ```OPENAI_API_BASE``` to ```https://openrouter.ai/api/v1``` and choose the appropriate model in the code (e.g. ```deepseek/deepseek-chat```).
+
+---
+
+# Indexing documents (create Pinecone vectors)
+1. Add your PDF or research files into the ```data/``` or ```research/``` folder.
+2. Run the indexer:
+   ```bash
+   python store_index.py
+   ```
+```store_index.py``` will:
+- Load PDFs
+- Extract text and clean it
+- Split text into chunks
+- Compute embeddings
+- Upsert vectors into the Pinecone index
+Make sure ```.env``` is configured before running.
